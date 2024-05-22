@@ -1,0 +1,62 @@
+import { HandPlatter, LockOpen, LogOut, Mail, User } from "lucide-react";
+import SideBarItem from "./components/SideBarItem";
+import { useAuthStore } from "@/shared/store/useAuthStore";
+import { useNavigate } from "react-router-dom";
+import { authStorage } from "@/features/auth/login/hooks/authLocalStorage";
+
+const SideBar = () => {
+  const loggout = useAuthStore((state) => state.loggout);
+  const navigate = useNavigate();
+
+  const nameUser = authStorage
+    .get()
+    ?.user.name.split(" ")
+    .slice(0, 1)
+    .join(" ");
+
+  const handleLoggout = () => {
+    loggout();
+    navigate("/login");
+  };
+  return (
+    <section className="h-full flex flex-col bg-primary  bg-primaryBg w-[250px]">
+      <div className="flex flex-col gap-4 px-6 py-8">
+        <div className="flex items-center gap-4">
+          <h1 className="text-2xl font-bold text-white">DevCond</h1>
+        </div>
+
+        <div>
+          <p className="text-lg ">Olá,</p>
+          <span className="font-semibold text-white text-xl">{nameUser}</span>
+        </div>
+      </div>
+
+      <nav className="flex flex-1 py-8 flex-col justify-between">
+        <div className="flex flex-col gap-4">
+          <SideBarItem
+            route="/main/messages"
+            icon={<Mail />}
+            label="Mensagens"
+          />
+          <SideBarItem route="/main/users" icon={<User />} label="Usuários" />
+          <SideBarItem
+            route="/main/services"
+            icon={<HandPlatter />}
+            label="Serviços"
+          />
+          <SideBarItem route="/main/find" icon={<LockOpen />} label="Achei" />
+        </div>
+
+        <button
+          onClick={handleLoggout}
+          className="mx-6 flex items-center justify-center gap-4 bg-white border-[1px] rounded-xl p-2 text-primaryBg text-lg font-semibold hover:opacity-75 transition-all duration-300"
+        >
+          <LogOut color="#3481d9" />
+          Sair
+        </button>
+      </nav>
+    </section>
+  );
+};
+
+export default SideBar;

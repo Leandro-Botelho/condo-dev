@@ -1,0 +1,30 @@
+.inputBox {
+  position: relative;
+}
+.smartInput {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+}
+.smartInput:focus ~ .label,
+.smartInput:not(:placeholder-shown).smartInput:not(:focus) ~ .label {
+  color: #3481d9;
+  transform: translateX(5px) translateY(-12px);
+  background: #fff;
+  padding: 0px 14px;
+  font-size: .9rem;
+}
+.label {
+  position: absolute;
+  left: 0;
+  padding: 15px;
+  pointer-events: none;
+  font-size: 1rem;
+  color: #3481d9;
+  transition: 0.15s all ease-in-out;
+}

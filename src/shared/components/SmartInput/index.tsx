@@ -2,6 +2,7 @@ import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import "./index.css";
 
 export interface ISmartInputProps<T extends FieldValues> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control?: Control<T, any>;
   name?: Path<T>;
   style?: React.CSSProperties;
@@ -15,7 +16,6 @@ const SmartInput = <T extends FieldValues>({
   label,
   name,
   type,
-  icon,
 }: ISmartInputProps<T>) => {
   return (
     <Controller

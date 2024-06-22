@@ -1,7 +1,7 @@
 import { API } from "@/core/networking/api";
-import { IUsersParams } from "@/shared/models/IUser";
+import { IUserResponse } from "@/shared/models/IUser";
 
-export async function getUsers(): Promise<IUsersParams[]> {
+export async function getUsers(): Promise<IUserResponse[]> {
   const response = await API.get(`users`);
 
   return response.data;

@@ -1,6 +1,9 @@
 import { RouteObject } from "react-router-dom";
 import UsersPage from "../pages/users/page";
 import Dashboard from "@/templates/dashboard";
+import Messages from "../pages/messages/page";
+import Occurrences from "../pages/services/page";
+import Find from "../pages/find/page";
 
 export const MainRoutes: RouteObject[] = [
   {
@@ -12,12 +15,15 @@ export const MainRoutes: RouteObject[] = [
     element: <UsersPage />,
   },
   {
-    path: "/main/message",
+    path: "/main/messages",
+    element: <Messages />,
   },
   {
-    path: "/main/service",
+    path: "/main/services",
+    element: <Occurrences />,
   },
   {
     path: "/main/find-by-lost",
+    element: <Find />,
   },
 ];

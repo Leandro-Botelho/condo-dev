@@ -16,7 +16,12 @@ const ModalViewMessage = ({ dataViewMessage }: IModalViewMessage) => {
     <Modal
       title={dataViewMessage.title}
       iconTrigger={
-        <Eye className="cursor-pointer" color="#222" width={30} height={30} />
+        <Eye
+          className="cursor-pointer"
+          color="#B5B5B5"
+          width={30}
+          height={30}
+        />
       }
     >
       <div>

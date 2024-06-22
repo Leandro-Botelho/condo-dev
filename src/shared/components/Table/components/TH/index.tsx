@@ -1,17 +1,15 @@
 interface ThProps {
   title: string;
-  style?: React.CSSProperties;
+  className?: string;
+  width?: string;
 }
 
-const TH = ({ title, style }: ThProps) => {
+export const TH = ({ title, className }: ThProps) => {
   return (
     <th
-      style={style}
-      className="text-2xl p-4 text-center border-r-2 border-borderTable text-txPrimary  w-[60%]"
+      className={`${className} text-2xl p-4 text-center border-r-2 border-borderTable text-txPrimary`}
     >
       {title}
     </th>
   );
 };
-
-export default TH;

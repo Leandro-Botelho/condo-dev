@@ -1,48 +1,46 @@
-
 import { messageMock } from "@/mock/messages";
-import Breadcrumb from "@/shared/components/Breadcrumb";
-import H1 from "@/shared/components/H1";
+import Container from "@/shared/components/Container";
 import ModalCreateMessage from "@/shared/components/Modal/Message/ModalCreateMessage";
 import ModalViewMessage from "@/shared/components/Modal/Message/ModalViewMessage";
-import Table from "@/shared/components/Table";
-import TD from "@/shared/components/Table/components/TD";
-import TH from "@/shared/components/Table/components/TH";
-import TR from "@/shared/components/Table/components/TR";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/shared/components/ui/table";
 import { useUnLoggedUser } from "@/shared/hooks/useUnLoggedUser";
 
 const MessageTemplate = () => {
   useUnLoggedUser();
   return (
-    <main className="flex flex-col gap-8 relative h-full">
-      <Breadcrumb label="Mensagens" />
-
-      <div className="flex flex-col gap-8">
-        <H1>Mensagens</H1>
+    <>
+      <Container label="Avisos">
         <Table>
-          <thead>
-            <TR>
-              <TH title="Título" />
-              <TH title="Criado" />
-              <TH title="Visualizar" />
-            </TR>
-          </thead>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Aviso</TableHead>
+              <TableHead>Criado</TableHead>
+              <TableHead>Ação</TableHead>
+            </TableRow>
+          </TableHeader>
 
-          <tbody>
+          <TableBody>
             {messageMock.map((dataMessage, index) => (
-              <TR key={index}>
-                <TD>{dataMessage.title}</TD>
-                <TD>{dataMessage.date}</TD>
-                <TD>
+              <TableRow key={index}>
+                <TableCell>{dataMessage.title}</TableCell>
+                <TableCell>{dataMessage.date}</TableCell>
+                <TableCell>
                   <ModalViewMessage dataViewMessage={dataMessage} />
-                </TD>
-              </TR>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
+          </TableBody>
         </Table>
-      </div>
-
+      </Container>
       <ModalCreateMessage />
-    </main>
+    </>
   );
 };
 

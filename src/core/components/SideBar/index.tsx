@@ -26,7 +26,7 @@ const SideBar = () => {
         </div>
 
         <div>
-          <p className="text-lg ">Olá,</p>
+          <p className="text-lg font-semibold text-white ">Olá,</p>
           <span className="font-semibold text-white text-xl">{nameUser}</span>
         </div>
       </div>
@@ -44,7 +44,11 @@ const SideBar = () => {
             icon={<HandPlatter />}
             label="Serviços"
           />
-          <SideBarItem route="/main/find" icon={<LockOpen />} label="Achei" />
+          <SideBarItem
+            route="/main/find-by-lost"
+            icon={<LockOpen />}
+            label="Achei"
+          />
         </div>
 
         <button

@@ -5,10 +5,12 @@ import { Outlet } from "react-router-dom";
 const Main = () => {
   useUnLoggedUser();
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen w-screen gap-2">
       <SideBar />
 
-      <Outlet />
+      <div className="flex-1">
+        <Outlet />
+      </div>
     </div>
   );
 };

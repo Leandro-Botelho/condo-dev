@@ -4,12 +4,15 @@ import { Modal } from "../..";
 import SmartInput from "@/shared/components/SmartInput";
 import Textarea from "@/shared/components/Textarea";
 import Button from "@/shared/components/Button";
+import { useForm } from "react-hook-form";
 
 const ModalCreateMessage = () => {
+  const { control } = useForm();
+
   return (
     <Modal title="Criar nova mensagem" iconTrigger={<AddItem />}>
       <form className="flex flex-col gap-4 ">
-        <SmartInput label="Título" />
+        <SmartInput control={control} name="titleMessage" label="Título" />
         <Textarea placeholder="Digite o assunto da mensagem" rows={3} />
       </form>
       <div className="flex justify-end gap-6 mt-4">

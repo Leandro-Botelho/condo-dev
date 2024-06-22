@@ -16,7 +16,7 @@ export const useLoginAuth = () => {
   const login = useAuthStore((state) => state.login);
 
   const authUser = async (params: ILoginParams) => {
-    screenLoader.showLoader();
+    screenLoader.show();
 
     try {
       const { access_token, user }: ILoginResponse = await authService(params);
@@ -40,7 +40,7 @@ export const useLoginAuth = () => {
     } catch (error) {
       toast.error("Não foi possível logar");
     } finally {
-      screenLoader.hideLoader();
+      screenLoader.hide();
     }
   };
 

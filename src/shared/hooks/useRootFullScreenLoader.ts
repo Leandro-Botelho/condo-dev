@@ -1,8 +1,7 @@
 import { useRootFullScreenLoaderStore } from "../store/useRootScreenLoader";
 
-
 export const useRootFullScreenLoader = () => {
   const { hideLoader, showLoader } = useRootFullScreenLoaderStore();
 
-  return { hideLoader, showLoader };
+  return { hide: hideLoader, show: showLoader };
 };

@@ -15,14 +15,14 @@ const Dashboard = () => {
   });
 
   return (
-    <div className=" p-12 ">
+    <div className=" p-12  w-full">
       <div className="flex gap-8 ">
         <Card
           title="Usuários"
           data={
-            data
-              ? `${data.length} ${data.length > 1 ? "Usuários" : "Usuário"}`
-              : ""
+            data?.length
+              ? `${data.length} Usuários`
+              : "Nenhum usuário cadastrado "
           }
           fill="bg-cardOne"
           route="users"
@@ -43,7 +43,7 @@ const Dashboard = () => {
           title="Achados e perdidos"
           data={`${findMock.length} Itens`}
           fill="bg-cardFour"
-          route="find"
+          route="find-by-lost"
         />
       </div>
     </div>

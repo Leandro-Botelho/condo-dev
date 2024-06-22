@@ -1,32 +1,49 @@
 import AddItem from "@/shared/components/AddItem";
-import { Modal } from "../..";
 import SmartInput from "@/shared/components/SmartInput";
-import Button from "@/shared/components/Button";
-import { DialogTrigger } from "@/shared/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/shared/components/ui/dialog";
+import { IUsersParams } from "@/shared/models/IUser";
+import { useCreateUser } from "@/templates/users/hooks/useCreateUser";
+import { useHandleSubmitCreateUser } from "@/templates/users/hooks/useHandleSubmitCreateUser";
 
 const ModalCreateUser = () => {
-  return (
-    <Modal title="Criação de inquilino" iconTrigger={<AddItem />}>
-      <form className="flex flex-col gap-7 ">
-        <SmartInput label="Nome completo" />
-        <SmartInput label="E-mail" />
-        <div className="flex gap-2">
-          <SmartInput label="Apto" />
-          <SmartInput label="Cidade" />
-        </div>
+  const { control, handleSubmit } = useHandleSubmitCreateUser();
+  const createUser = useCreateUser();
 
-        <div className="flex justify-end gap-6 mt-4">
-          <Button className="bg-white px-3 py-2 rounded-lg text-primaryBg font-semibold hover:opacity-80 hover:bg-white">
+  const onSubmit = (data: IUsersParams) => {
+    createUser(data);
+  };
+
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <AddItem />
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md bg-[#f6f6f5] pt-12 px-6">
+        <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+          <SmartInput control={control} label="E-mail" name="email" />
+          <SmartInput control={control} label="Nome Completo" name="name" />
+          <SmartInput
+            control={control}
+            label="Número de contato"
+            name="contact"
+          />
+          <SmartInput control={control} label="Condomínio" name="condominium" />
+          <SmartInput control={control} label="Apartamento" name="apartment" />
+          <SmartInput control={control} label="Cidade" name="town" />
+
+          <button
+            type="submit"
+            className="bg-primaryBg px-4 py-2 rounded-lg text-white"
+          >
             Criar
-          </Button>
-          <DialogTrigger>
-            <Button className="bg-transparent border-2 px-3 py-2 rounded-lg">
-              Cancelar
-            </Button>
-          </DialogTrigger>
-        </div>
-      </form>
-    </Modal>
+          </button>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 };
 

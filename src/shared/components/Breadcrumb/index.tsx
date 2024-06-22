@@ -7,7 +7,7 @@ interface IBreadcrumb {
 const Breadcrumb = ({ label }: IBreadcrumb) => {
   return (
     <div className="flex gap-1 ">
-      <Link className="underline text-primary" to="/main/dashboard">
+      <Link className="underline text-primary" to="/main">
         Painel
       </Link>
       <span className="font-light text-primary">/ {label}</span>

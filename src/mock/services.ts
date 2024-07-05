@@ -1,4 +1,4 @@
-interface IServiceProps {
+export interface IServiceProps {
   title: string;
   date: string;
   description: string;

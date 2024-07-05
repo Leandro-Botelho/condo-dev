@@ -21,9 +21,9 @@ export function Modal({
   return (
     <Dialog>
       <DialogTrigger>{iconTrigger}</DialogTrigger>
-      <DialogContent className=" min-w-[550px] bg-primaryBg border-none">
+      <DialogContent className=" min-w-[550px] bg-[#f6f6f5] border-none">
         <DialogHeader>
-          <DialogTitle className="my-6 text-center text-2xl text-white">
+          <DialogTitle className="my-6 text-center text-2xl text-black">
             {title}
           </DialogTitle>
           <DialogDescription>{children}</DialogDescription>

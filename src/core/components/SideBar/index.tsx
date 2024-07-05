@@ -33,12 +33,13 @@ const SideBar = () => {
 
       <nav className="flex flex-1 py-8 flex-col justify-between">
         <div className="flex flex-col gap-4">
+          <SideBarItem route="/main/users" icon={<User />} label="Usuários" />
+
           <SideBarItem
             route="/main/messages"
             icon={<Mail />}
             label="Mensagens"
           />
-          <SideBarItem route="/main/users" icon={<User />} label="Usuários" />
           <SideBarItem
             route="/main/services"
             icon={<HandPlatter />}

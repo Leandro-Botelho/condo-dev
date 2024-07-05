@@ -24,16 +24,24 @@ const ModalCreateUser = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md bg-[#f6f6f5] pt-12 px-6">
         <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
-          <SmartInput control={control} label="E-mail" name="email" />
           <SmartInput control={control} label="Nome Completo" name="name" />
+          <SmartInput control={control} label="E-mail" name="email" />
+          <SmartInput control={control} label="Condomínio" name="condominium" />
+          <SmartInput control={control} label="Apartamento" name="apartment" />
+          <div className="flex gap-4 ">
+            <SmartInput
+              style={{ flex: 1 }}
+              control={control}
+              label="Cidade"
+              name="town"
+            />
+            <SmartInput control={control} label="Estado" name="state" />
+          </div>
           <SmartInput
             control={control}
             label="Número de contato"
             name="contact"
           />
-          <SmartInput control={control} label="Condomínio" name="condominium" />
-          <SmartInput control={control} label="Apartamento" name="apartment" />
-          <SmartInput control={control} label="Cidade" name="town" />
 
           <button
             type="submit"

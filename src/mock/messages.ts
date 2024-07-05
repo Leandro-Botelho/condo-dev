@@ -1,4 +1,4 @@
-interface IMessageProps {
+export interface IMessageProps {
   title: string;
   date: string;
   description: string;

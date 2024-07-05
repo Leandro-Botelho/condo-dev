@@ -10,7 +10,6 @@
   outline: none;
   color: #222;
   font-size: 1rem;
-
 }
 .smartInput:focus ~ .label,
 .smartInput:not(:placeholder-shown).smartInput:not(:focus) ~ .label {

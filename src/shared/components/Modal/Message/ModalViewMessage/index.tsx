@@ -1,6 +1,11 @@
-import { Modal } from "../..";
-import Button from "@/shared/components/Button";
-import { Eye } from "lucide-react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+} from "@/shared/components/ui/dialog";
+import AssuntMessageList from "../../../AssuntMessageList";
 
 interface IModalViewMessage {
   dataViewMessage: {
@@ -9,42 +14,48 @@ interface IModalViewMessage {
     description: string;
     id: number;
   };
+  openModal: boolean;
+  onOpenChange: () => void;
 }
 
-const ModalViewMessage = ({ dataViewMessage }: IModalViewMessage) => {
+const ModalViewMessage = ({
+  dataViewMessage,
+  onOpenChange,
+  openModal,
+}: IModalViewMessage) => {
   return (
-    <Modal
-      title={dataViewMessage.title}
-      iconTrigger={
-        <Eye
-          className="cursor-pointer"
-          color="#B5B5B5"
-          width={30}
-          height={30}
-        />
-      }
-    >
-      <div>
-        <div className="flex flex-col gap-4">
-          <p className="text-xl text-txPrimary">
-            Evento para o dia:{" "}
-            <span className="font-bold text-txPrimary">
-              {dataViewMessage.date}
-            </span>
-          </p>
+    <Dialog open={openModal} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <div className="flex flex-col gap-4">
+            <AssuntMessageList
+              assuntMessage="Assunto"
+              titleMessage={dataViewMessage.title}
+            />
+            <AssuntMessageList
+              assuntMessage="Local"
+              titleMessage="Local da mensagem"
+            />
+            <AssuntMessageList
+              assuntMessage="Data"
+              titleMessage={dataViewMessage.date}
+            />
+            <AssuntMessageList
+              assuntMessage="Descrição"
+              titleMessage={dataViewMessage.description}
+            />
+          </div>
+        </DialogHeader>
 
-          <p className="bg-[#D0D0D0] text-black min-h-28 p-3 rounded-lg text-lg">
-            {dataViewMessage.description}
-          </p>
-        </div>
-
-        <div className="mt-8 flex justify-end">
-          <Button className="border-2 rounded-lg p-3 border-none bg-white text-primary font-semibold transition">
-            Finalizar mensagem
-          </Button>
-        </div>
-      </div>
-    </Modal>
+        <DialogFooter>
+          <DialogClose asChild>
+            <button className="bg-primaryBg px-4 py-2 rounded-lg outline-none text-white">
+              Fechar
+            </button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

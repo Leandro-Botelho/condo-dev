@@ -12,15 +12,17 @@ const ModalCreateMessage = () => {
   return (
     <Modal title="Criar nova mensagem" iconTrigger={<AddItem />}>
       <form className="flex flex-col gap-4 ">
-        <SmartInput control={control} name="titleMessage" label="Título" />
+        <SmartInput control={control} name="titleMessage" label="Assunto" />
+        <SmartInput control={control} name="localMessage" label="Local" />
+        <SmartInput control={control} name="dateMessage" label="Data" />
         <Textarea placeholder="Digite o assunto da mensagem" rows={3} />
       </form>
       <div className="flex justify-end gap-6 mt-4">
-        <Button className="bg-white px-3 py-2 rounded-lg text-primaryBg font-semibold hover:opacity-80 hover:bg-white">
+        <Button className="bg-primaryBg px-3 py-2 rounded-lg text-white font-semibold hover:opacity-80 hover:bg-white">
           Enviar
         </Button>
         <DialogTrigger>
-          <Button className="bg-transparent border-2 px-3 py-2 rounded-lg">
+          <Button className="bg-white text-black border-2 px-3 py-2 rounded-lg">
             Cancelar
           </Button>
         </DialogTrigger>

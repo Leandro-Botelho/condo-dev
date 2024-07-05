@@ -5,6 +5,7 @@ export interface IUsersParams {
   condominium: string;
   apartment: string;
   town: string;
+  state: string;
 }
 
 export interface IUserResponse extends IUsersParams {

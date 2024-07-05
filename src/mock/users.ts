@@ -1,4 +1,4 @@
-interface IUsersProps {
+export interface IUsersProps {
   name: string;
   condominium: string;
   apartment: string;

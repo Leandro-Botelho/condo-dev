@@ -16,6 +16,7 @@ const SmartInput = <T extends FieldValues>({
   label,
   name,
   type,
+  style,
 }: ISmartInputProps<T>) => {
   return (
     <Controller
@@ -34,6 +35,7 @@ const SmartInput = <T extends FieldValues>({
                 className="smartInput"
                 placeholder=" "
                 type={type}
+                style={{ borderColor: "#ccc", ...style }}
               />
               <span className="label">{label}</span>
             </div>

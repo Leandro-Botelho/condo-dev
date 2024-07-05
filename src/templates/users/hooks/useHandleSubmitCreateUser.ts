@@ -8,6 +8,7 @@ const createUserSchema = z.object({
   condominium: z.string().min(3),
   apartment: z.string().min(1),
   town: z.string().min(3),
+  state: z.string().min(3),
   contact: z.string().min(3),
 });
 
@@ -22,6 +23,7 @@ export const useHandleSubmitCreateUser = () => {
       condominium: "",
       apartment: "",
       town: "",
+      state: "",
       contact: "",
     },
   });

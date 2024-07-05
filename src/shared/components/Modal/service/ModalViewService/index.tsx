@@ -1,50 +1,62 @@
-import { Modal } from "../..";
-import Button from "@/shared/components/Button";
-import { Eye } from "lucide-react";
+import AssuntMessageList from "@/shared/components/AssuntMessageList";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+} from "@/shared/components/ui/dialog";
 
 interface IModalViewService {
-  dataViewMessage: {
+  dataViewService: {
     title: string;
     date: string;
     description: string;
     id: number;
     status: boolean;
   };
+  openModal: boolean;
+  onOpenChange: () => void;
 }
 
-const ModalViewService = ({ dataViewMessage }: IModalViewService) => {
+const ModalViewService = ({
+  dataViewService,
+  openModal,
+  onOpenChange,
+}: IModalViewService) => {
   return (
-    <Modal
-      title={dataViewMessage.title}
-      iconTrigger={
-        <Eye
-          className="cursor-pointer"
-          color="#D0D0D0"
-          width={30}
-          height={30}
-        />
-      }
-    >
-      <div>
-        <div className="flex flex-col gap-4">
-          <p className="bg-white text-black min-h-28 p-3 rounded-lg text-lg">
-            {dataViewMessage.description}
-          </p>
-        </div>
+    <Dialog open={openModal} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <div className="flex flex-col gap-4">
+            <AssuntMessageList
+              assuntMessage="Serviço"
+              titleMessage={dataViewService.title}
+            />
+            <AssuntMessageList
+              assuntMessage="Local"
+              titleMessage="Local do serviço"
+            />
+            <AssuntMessageList
+              assuntMessage="Data"
+              titleMessage={dataViewService.date}
+            />
+            <AssuntMessageList
+              assuntMessage="Descrição	"
+              titleMessage={dataViewService.description}
+            />
+          </div>
+        </DialogHeader>
 
-        <div className="mt-8 flex justify-end">
-          {dataViewMessage.status ? (
-            <p className="border-2 rounded-lg p-3 border-none bg-white text-primary  font-semibold transition">
-              serviço concluido
-            </p>
-          ) : (
-            <Button className="border-2 rounded-lg p-3 border-none bg-white text-primary  hover:opacity-80  font-semibold transition">
-              Finalizar mensagem
-            </Button>
-          )}
-        </div>
-      </div>
-    </Modal>
+        <DialogFooter>
+          <DialogClose asChild>
+            <button className="bg-primaryBg px-4 py-2 rounded-lg outline-none text-white">
+              Fechar
+            </button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

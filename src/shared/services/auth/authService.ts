@@ -17,7 +17,7 @@ export interface ILoginResponse {
 }
 
 export const authService = async (
-  params: ILoginParams
+  params: ILoginParams,
 ): Promise<ILoginResponse> => {
   const response = await API.post("login", params);
 

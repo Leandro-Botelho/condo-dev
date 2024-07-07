@@ -26,9 +26,9 @@ const ServicesTemplate = () => {
   return (
     <>
       <Container label="Serviços">
-        <Table className="border-2">
+        <Table className="border-2 w-[550px]">
           <TableHeader>
-            <TableRow>
+            <TableRow className="text-xl">
               <TableHead>Aviso</TableHead>
               <TableHead>Criado</TableHead>
             </TableRow>
@@ -36,7 +36,11 @@ const ServicesTemplate = () => {
 
           <TableBody>
             {serviceMock.map((dataMessage, index) => (
-              <TableRow key={index} onClick={() => serviceDetails(dataMessage)}>
+              <TableRow
+                key={index}
+                onClick={() => serviceDetails(dataMessage)}
+                className="cursor-pointer"
+              >
                 <TableCell>{dataMessage.title}</TableCell>
                 <TableCell>{dataMessage.date}</TableCell>
               </TableRow>

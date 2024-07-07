@@ -1,5 +1,3 @@
-
-
 import SmartInput from "@/shared/components/SmartInput";
 import useLogin, { LoginFormProps } from "./hooks/useLoginForm";
 import { useLoginAuth } from "./hooks/useLoginAuth";

@@ -29,14 +29,16 @@ const MessageTemplate = () => {
     <>
       <Container label="Avisos">
         <main className="flex gap-8">
-          <div className="bg-blue-300 h-[200px] w-[350px] rounded-lg flex items-center justify-center">
-            <p>Você não tem eventos para hoje!</p>
+          <div className="bg-hoverBg h-[200px] w-[550px] rounded-lg flex items-center justify-center px-2">
+            <p className="text-white font-semibold text-xl text-center">
+              Você não tem eventos para hoje!
+            </p>
           </div>
-
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Mensagem</TableHead>
+                <TableHead>Local</TableHead>
                 <TableHead>Data</TableHead>
               </TableRow>
             </TableHeader>
@@ -49,6 +51,7 @@ const MessageTemplate = () => {
                   className="cursor-pointer"
                 >
                   <TableCell>{dataMessage.title}</TableCell>
+                  <TableCell>{dataMessage.id}</TableCell>
                   <TableCell>{dataMessage.date}</TableCell>
                 </TableRow>
               ))}

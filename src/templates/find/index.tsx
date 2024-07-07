@@ -7,7 +7,7 @@ const FindTemplate = () => {
   useUnLoggedUser();
   return (
     <Container label="Achados e perdidos">
-      <div className="flex gap-12 flex-wrap">
+      <div className="flex gap-8 flex-wrap">
         {findMock.map((itemsFind) => (
           <CardFind key={itemsFind.id} itemsFind={itemsFind} />
         ))}

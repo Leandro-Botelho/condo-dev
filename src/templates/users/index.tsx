@@ -3,12 +3,6 @@ import Container from "@/shared/components/Container";
 import ModalCreateUser from "@/shared/components/Modal/Users/ModalCreateUser";
 import ModalViewUser from "@/shared/components/Modal/Users/ModalViewUser";
 import {
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-} from "@/shared/components/ui/dialog";
-import {
   Table,
   TableBody,
   TableCell,
@@ -19,7 +13,6 @@ import {
 import { QUERY_KEYS } from "@/shared/constants/queryKey";
 import { useUnLoggedUser } from "@/shared/hooks/useUnLoggedUser";
 import { getUsers } from "@/shared/services/users/getUserService";
-import { handleSliceName } from "@/shared/utils/handleSliceNumber";
 import { useQuery } from "@tanstack/react-query";
 import { Search } from "lucide-react";
 import { useState } from "react";
@@ -59,37 +52,35 @@ const UsersTemplate = () => {
           </div>
         </div>
 
-        <main className="flex gap-6 items-center justify-center flex-wrap ">
-          <Table className=" border-[1px]">
-            <TableHeader>
-              <TableRow>
-                <TableHead>Nome</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Contato</TableHead>
-                <TableHead>Início</TableHead>
+        <Table className=" border-[1px]">
+          <TableHeader>
+            <TableRow className="text-xl">
+              <TableHead>Nome</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Contato</TableHead>
+              <TableHead>Início</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {usersMock?.map((user) => (
+              <TableRow
+                key={user.id}
+                onClick={() => clientDetails(user)}
+                className="cursor-pointer text-lg"
+              >
+                <TableCell>{user.name}</TableCell>
+
+                {/* email */}
+                <TableCell>{user.name}</TableCell>
+
+                {/* numero de contato */}
+                <TableCell>{user.name}</TableCell>
+
+                <TableCell>21/05/2024</TableCell>
               </TableRow>
-            </TableHeader>
-            <TableBody>
-              {usersMock?.map((user) => (
-                <TableRow
-                  key={user.id}
-                  onClick={() => clientDetails(user)}
-                  className="cursor-pointer"
-                >
-                  <TableCell>{handleSliceName(user.name)}</TableCell>
-
-                  {/* email */}
-                  <TableCell>{user.name}</TableCell>
-
-                  {/* numero de contato */}
-                  <TableCell>{user.name}</TableCell>
-
-                  <TableCell>21/05/2024</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </main>
+            ))}
+          </TableBody>
+        </Table>
       </Container>
 
       <ModalCreateUser />

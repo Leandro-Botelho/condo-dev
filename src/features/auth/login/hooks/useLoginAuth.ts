@@ -38,7 +38,7 @@ export const useLoginAuth = () => {
 
       navigate("/main");
     } catch (error) {
-      toast.error("Não foi possível logar");
+      toast.error("Email ou senha incorretos");
     } finally {
       screenLoader.hide();
     }

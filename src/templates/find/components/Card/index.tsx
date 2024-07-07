@@ -1,11 +1,9 @@
-import { Modal } from "@/shared/components/Modal";
 import ModalViewFindItem from "@/shared/components/Modal/Find";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/shared/components/ui/dialog";
 
@@ -24,7 +22,7 @@ const CardFind = ({ itemsFind }: IFindProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="bg-border shadow-lg rounded-lg w-[300px] cursor-pointer">
+        <div className="bg-border shadow-lg rounded-lg w-[300px] cursor-pointer transition-all hover:-translate-y-1">
           <h1 className="text-center p-2 w-full rounded-t-lg bg-primaryBg text-white font-semibold text-xl">
             {itemsFind.title}
           </h1>

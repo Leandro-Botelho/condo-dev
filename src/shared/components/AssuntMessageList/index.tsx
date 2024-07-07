@@ -10,7 +10,7 @@ const AssuntMessageList = ({
   return (
     <div className="flex flex-col gap-2">
       <h2 className="text-xl font-semibold">{assuntMessage}</h2>
-      <p className="bg-gray-200 px-2 py-3 rounded-lg text-lg">{titleMessage}</p>
+      <p className="bg-gray-200 p-3 rounded-lg text-lg">{titleMessage}</p>
     </div>
   );
 };

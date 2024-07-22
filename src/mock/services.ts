@@ -2,8 +2,8 @@ export interface IServiceProps {
   title: string;
   date: string;
   description: string;
-  id: number;
   status: boolean;
+  id: number;
 }
 
 export const serviceMock: IServiceProps[] = [

@@ -14,7 +14,11 @@ const ModalCreateUser = () => {
   const createUser = useCreateUser();
 
   const onSubmit = (data: IUsersParams) => {
-    createUser(data);
+    const dateToday = new Date().toISOString();
+    createUser({
+      ...data,
+      created_at: dateToday,
+    });
   };
 
   return (
@@ -35,12 +39,12 @@ const ModalCreateUser = () => {
               label="Cidade"
               name="town"
             />
-            <SmartInput control={control} label="Estado" name="state" />
           </div>
           <SmartInput
             control={control}
             label="Número de contato"
             name="contact"
+            mask="99 99999-9999"
           />
 
           <button

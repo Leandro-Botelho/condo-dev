@@ -2,9 +2,11 @@ import SmartInput from "@/shared/components/SmartInput";
 import useLogin, { LoginFormProps } from "./hooks/useLoginForm";
 import { useLoginAuth } from "./hooks/useLoginAuth";
 import { useState } from "react";
-import { Eye } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
+import { useRedirectLoggedUser } from "@/shared/hooks/useRedirectLoggedUser";
 
 const LoginPage = () => {
+  useRedirectLoggedUser();
   const { control, handleSubmit, errors } = useLogin();
   const login = useLoginAuth();
   const [showPassword, setShowPassword] = useState(false);
@@ -39,7 +41,7 @@ const LoginPage = () => {
                 errors.password ? "bottom-10" : "bottom-4"
               } right-6`}
             >
-              <Eye color="#3481d9" />
+              {showPassword ? <EyeOff size={24} /> : <Eye size={24} />}
             </span>
           </div>
 

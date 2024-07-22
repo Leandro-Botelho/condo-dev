@@ -1,5 +1,7 @@
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import "./index.css";
+import React from "react";
+import { addMask } from "@/shared/utils/addMask";
 
 export interface ISmartInputProps<T extends FieldValues> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -9,6 +11,8 @@ export interface ISmartInputProps<T extends FieldValues> {
   label: string;
   type?: string;
   icon?: React.ReactNode;
+  mask?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SmartInput = <T extends FieldValues>({
@@ -17,6 +21,8 @@ const SmartInput = <T extends FieldValues>({
   name,
   type,
   style,
+  mask,
+  onChange: onChangeProp,
 }: ISmartInputProps<T>) => {
   return (
     <Controller
@@ -29,7 +35,19 @@ const SmartInput = <T extends FieldValues>({
           <div className="inputBox">
             <div>
               <input
-                onChange={onChange}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  const newEvent = {
+                    ...e,
+                    target: {
+                      ...e.target,
+                      value: mask
+                        ? addMask(e.target.value, mask)
+                        : e.target.value,
+                    },
+                  };
+                  onChange(newEvent);
+                  onChangeProp && onChangeProp(newEvent);
+                }}
                 onBlur={onBlur}
                 value={value}
                 className="smartInput"

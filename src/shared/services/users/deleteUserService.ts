@@ -1,8 +1,7 @@
-import api from "@/core/networking/api";
-import { AxiosError } from "axios";
+import { API } from "@/core/networking/api";
 
 export const deleteUserService = async (id: number) => {
-  const response = await api.delete(`users/${id}`);
+  const response = await API.delete(`users/${id}`);
 
   return response.data;
 };

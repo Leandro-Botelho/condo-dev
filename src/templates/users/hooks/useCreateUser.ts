@@ -8,6 +8,7 @@ export const useCreateUser = () => {
 
   const createUser = async (params: CreateUserSchema) => {
     loadScreen.show();
+
     try {
       await createUserService(params);
       window.location.reload();

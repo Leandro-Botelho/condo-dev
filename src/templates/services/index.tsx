@@ -9,11 +9,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/ui/table";
-import { useUnLoggedUser } from "@/shared/hooks/useUnLoggedUser";
+import { IServiceUserResponse } from "@/shared/models/IService";
 import { useState } from "react";
-const ServicesTemplate = () => {
-  useUnLoggedUser();
 
+interface IServicePropss {
+  serviceUser: IServiceUserResponse[];
+}
+
+const ServicesTemplate = ({ serviceUser }: IServicePropss) => {
   const [openDetailsService, setOpenDetailsService] = useState(false);
 
   // const [client, setClient] = useState<IUsersParams | null>(null);

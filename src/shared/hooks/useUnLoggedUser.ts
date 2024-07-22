@@ -7,7 +7,6 @@ import { useAuthStore } from "../store/useAuthStore";
 
 export const useUnLoggedUser = () => {
   const { login, user } = useAuthStore();
-
   const navigate = useNavigate();
 
   useEffect(() => {

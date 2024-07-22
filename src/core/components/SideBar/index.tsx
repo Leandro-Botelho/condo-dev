@@ -3,6 +3,7 @@ import SideBarItem from "./components/SideBarItem";
 import { authStorage } from "@/features/auth/login/hooks/authLocalStorage";
 import ModalLoggout from "@/shared/components/Modal/Loggout";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const [openModalLoggout, setOpenModalLoggout] = useState(false);
@@ -15,14 +16,16 @@ const SideBar = () => {
 
   return (
     <>
-      <section className="h-full flex flex-col bg-primary  bg-primaryBg w-[250px]">
+      <section className="h-full flex flex-col bg-primary  bg-primaryBg w-[200px]">
         <div className="flex flex-col gap-4 px-6 py-8">
           <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold text-white">DevCond</h1>
+            <Link to="/main" className="text-2xl font-bold text-white">
+              DevCond
+            </Link>
           </div>
 
           <div>
-            <p className="text-lg font-semibold text-white ">Olá,</p>
+            <p className="text-lg  text-white ">Olá,</p>
             <span className="font-semibold text-white text-xl">{nameUser}</span>
           </div>
         </div>

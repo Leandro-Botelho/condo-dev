@@ -1,5 +1,7 @@
-import { mask, unMask, unmask } from "remask";
+import { mask, unMask } from "remask";
 
 export function addMask(value: string, maskString: string) {
-  return mask(unmask(value), maskString);
+  const maskValue = unMask(value);
+
+  return mask(maskValue, maskString);
 }

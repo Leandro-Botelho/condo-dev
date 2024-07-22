@@ -2,13 +2,11 @@ import Card from "./components/Card";
 import { messageMock } from "@/mock/messages";
 import { serviceMock } from "@/mock/services";
 import { findMock } from "@/mock/findAndLost";
-import { useUnLoggedUser } from "@/shared/hooks/useUnLoggedUser";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "@/shared/constants/queryKey";
 import { getUsers } from "@/shared/services/users/getUserService";
 
 const Dashboard = () => {
-  useUnLoggedUser();
   const { data } = useQuery({
     queryKey: [QUERY_KEYS.user],
     queryFn: getUsers,

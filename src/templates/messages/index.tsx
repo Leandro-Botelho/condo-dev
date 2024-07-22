@@ -10,12 +10,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/ui/table";
-import { useUnLoggedUser } from "@/shared/hooks/useUnLoggedUser";
+import { IMessageResponse } from "@/shared/models/IMessage";
 import { useState } from "react";
 
-const MessageTemplate = () => {
-  useUnLoggedUser();
+interface IMessagePropss {
+  messageResponse: IMessageResponse[];
+}
 
+const MessageTemplate = ({ messageResponse }: IMessagePropss) => {
   const [openDetailsMessage, setOpenDetailsMessage] = useState(false);
 
   // const [client, setClient] = useState<IUsersParams | null>(null);

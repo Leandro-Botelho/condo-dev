@@ -1,10 +1,8 @@
 import { findMock } from "@/mock/findAndLost";
 import CardFind from "./components/Card";
-import { useUnLoggedUser } from "@/shared/hooks/useUnLoggedUser";
 import Container from "@/shared/components/Container";
 
 const FindTemplate = () => {
-  useUnLoggedUser();
   return (
     <Container label="Achados e perdidos">
       <div className="flex gap-8 flex-wrap">

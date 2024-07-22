@@ -1,4 +1,3 @@
-import { IUsersProps, usersMock } from "@/mock/users";
 import Container from "@/shared/components/Container";
 import ModalCreateUser from "@/shared/components/Modal/Users/ModalCreateUser";
 import ModalViewUser from "@/shared/components/Modal/Users/ModalViewUser";
@@ -10,28 +9,23 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/components/ui/table";
-import { QUERY_KEYS } from "@/shared/constants/queryKey";
-import { useUnLoggedUser } from "@/shared/hooks/useUnLoggedUser";
-import { getUsers } from "@/shared/services/users/getUserService";
-import { useQuery } from "@tanstack/react-query";
+import { IUserResponse, IUsersParams } from "@/shared/models/IUser";
+import { formatterDateToBr } from "@/shared/utils/formatterDate";
 import { Search } from "lucide-react";
 import { useState } from "react";
 
-const UsersTemplate = () => {
-  useUnLoggedUser();
-  const { data: users } = useQuery({
-    queryKey: [QUERY_KEYS.user],
-    queryFn: getUsers,
-  });
+interface IUsers {
+  users: IUserResponse[];
+}
 
+const UsersTemplate = ({ users }: IUsers) => {
   const [openDetailsClient, setOpenDetailsClient] = useState(false);
 
-  // const [client, setClient] = useState<IUsersParams | null>(null);
-  const [client, setClient] = useState<IUsersProps | null>(null);
+  const [client, setClient] = useState<IUsersParams | null>(null);
 
-  const [filterUsers, setFilterUsers] = useState("");
+  const [, setFilterUsers] = useState("");
 
-  const clientDetails = (client: IUsersProps) => {
+  const clientDetails = (client: IUsersParams) => {
     setClient(client);
     setOpenDetailsClient(true);
   };
@@ -62,7 +56,7 @@ const UsersTemplate = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {usersMock?.map((user) => (
+            {users?.map((user) => (
               <TableRow
                 key={user.id}
                 onClick={() => clientDetails(user)}
@@ -71,12 +65,12 @@ const UsersTemplate = () => {
                 <TableCell>{user.name}</TableCell>
 
                 {/* email */}
-                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.email}</TableCell>
 
                 {/* numero de contato */}
-                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.contact}</TableCell>
 
-                <TableCell>21/05/2024</TableCell>
+                <TableCell>{formatterDateToBr(user.created_at)}</TableCell>
               </TableRow>
             ))}
           </TableBody>
